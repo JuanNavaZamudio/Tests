@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Texto a mayúsculas, Reactivo y Funcional ...supongo</h1>
+
+    <input id="inputNombre" placeholder="Nombre">
+    <br>
+    <input id="inputApellido" placeholder="Apellido">
+    <br>
+    <label id="lblResultado">Resultado:</label>
+</body>
+<script>
+    const pipe = (...fnc) => (x) => fnc.reduce((v, f) => f(v), x)
+
+    const Mayusculas = cadena => cadena.toUpperCase()
+
+    const JuntarCAdenas =
+        persona => persona.nombre + ' ' + persona.apellido
+
+    const ImprimeResultado =
+        cadena => document
+        .querySelector('#lblResultado')
+        .innerHTML = `Resultado: ${cadena}`
+
+    const ObtieneInput = input => document
+        .querySelector(input)
+        .value
+
+    const ObtieneNombreYApellido =
+        () => {
+            return {
+                nombre: ObtieneInput('#inputNombre'),
+                apellido: ObtieneInput('#inputApellido')
+            }
+        }
+
+    const AgregaEscuchadorOnChange =
+        campo => document
+        .querySelector(campo.id)
+        .addEventListener('keyup', campo.funcion)
+
+    const agregaEventos =
+        (...func) => func.forEach(f => f())
+
+    const ProcesaInputs =
+        pipe(
+            ObtieneNombreYApellido,
+            JuntarCAdenas,
+            Mayusculas,
+            ImprimeResultado
+        )
+
+    const InicializaPagina =
+        () => agregaEventos(
+            AgregaEscuchadorOnChange({
+                id: '#inputNombre',
+                funcion: ProcesaInputs
+            }),
+            AgregaEscuchadorOnChange({
+                id: '#inputApellido',
+                funcion: ProcesaInputs
+            })
+        )
+
+    InicializaPagina()
+</script>
+
+</html>

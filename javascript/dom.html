@@ -1,0 +1,29 @@
+<html>
+
+<head>
+    <title></title>
+    <meta content="">
+    <style></style>
+</head>
+
+<body>
+    <input id="miInput" type="text" onkeyup="copiarTextoInputAParrafo()" />
+
+    <p id="miTexto"></p>
+
+    <script>
+        //onkeydown   cuando presionas una tecla y esta baja hacia el switch
+        //onkeypress  cuando presionas una tecla y no importa si está abajo o arriba
+        //onkeyup     cuando presionas la tecla y al momento de soltarla
+
+        function copiarTextoInputAParrafo() {
+            let miInput = document.getElementById("miInput")
+            let miParrafo = document.getElementById("miTexto")
+
+            let textoInput = miInput.value
+            miParrafo.innerText = textoInput
+        }
+    </script>
+</body>
+
+</html>

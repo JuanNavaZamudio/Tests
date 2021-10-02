@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <title></title>
+    <meta content="">
+    <style></style>
+</head>
+
+<body>
+</body>
+<script>
+    const promesa = new Promise(function miPromesa(resolver, rechazar) {
+        console.log('mi promesa')
+        resolver(1)
+    }).then(function miSegundaPromesa(resultado) {
+        console.log('mi segunda promesa')
+        console.log('valor que recibió: ' + resultado)
+    })
+
+    const promesa2 = new Promise(function miPromesa(resolver, rechazar) {
+        console.log('mi promesa 3')
+        resolver(1)
+    }).then(resultado => {
+        return new Promise(function miCuartaPromesa(resolver) {
+            console.log('mi cuarta promesa')
+            console.log('valor que recibió: ' + resultado)
+            resolver('funcionó')
+        })
+    }).then(respuesta => console.log(respuesta));
+
+    miFuncionParaBuscar = x => x === 5
+
+    const resultado = [1, 2, 3, 4, 5, 6, 7, 321, 2543, 34, 321].find(miFuncionParaBuscar)
+
+
+    console.log(resultado)
+</script>
+
+</html>
