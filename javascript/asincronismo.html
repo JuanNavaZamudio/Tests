@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button id="boton"></button>
+
+    <script>
+        const hola = ()=>{
+            setTimeout(() => {
+                return Math.random()
+            }, 5000);
+        }
+
+        console.log('comprando')
+        let res= hola()
+        if(res>0.5)
+        console.log('compra aceptada')
+        else
+        console.log('compra rechazada')
+    </script>
+</body>
+</html>
