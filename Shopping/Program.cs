@@ -6,6 +6,7 @@ void printOptions(){
     Console.WriteLine("1) Add an item");
 
 }
+
 MenuOptions GetUserOption(){
       try{
           return (MenuOptions)Convert.ToInt32((Console.ReadLine()));
